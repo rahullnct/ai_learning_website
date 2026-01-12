@@ -4,7 +4,7 @@ import path from "path";
 import cors from "cors";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-
+import AuthRoutes from "./Routes/AuthRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +21,13 @@ app.use(cors({
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+
+// routers
+app.use("/api/auth",AuthRoutes);
+
+
+
+
 DbConnect();
 app.get("/",(req,res)=>{
     res.send(`<h1>Hello This is Rahul The Developer</h1>`);
